@@ -15,6 +15,15 @@ export default defineConfig((config) => {
     },
     build: {
       target: 'esnext',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            ui: ['@radix-ui/react-dialog', '@radix-ui/react-tabs', '@radix-ui/react-dropdown-menu'],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000,
     },
     plugins: [
       nodePolyfills({
